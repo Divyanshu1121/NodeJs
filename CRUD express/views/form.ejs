@@ -42,6 +42,7 @@
             <td>name</td>
             <td>email</td>
             <td>password</td>
+            <td>Action</td>
         </tr>
         <% students.map((val,i)=>{ %>
             <tr>
@@ -56,6 +57,10 @@
                 </td>
                 <td>
                     <%= val.password %>
+                </td>
+                <td>
+                    <a href="/deletedata/<%= val.id %>">Delete</a>
+                    <a href="/editdata/<%= val.id %>">Edit</a>
                 </td>
             </tr>
             <% }) %>

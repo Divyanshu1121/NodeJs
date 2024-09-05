@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <h1 style="text-align: center;">All Students Data</h1>
+    <form action="/insertData" method="post">
+        <table align="center" border="1">
+            <tr>
+                <td>id</td>
+                <td><input type="number" name="id" value="<%= data.id %>" id="" disabled>
+                    <input type="hidden" name="editId" value="<%= data.id %>" id="">
+                </td>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td><input type="text" name="name" id=""></td>
+            </tr>
+            <tr>
+                <td>email</td>
+                <td><input type="email" name="email" id=""></td>
+            </tr>
+            <tr>
+                <td>password</td>
+                <td><input type="password" name="password" id=""></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Add Data"></td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+
+</html>

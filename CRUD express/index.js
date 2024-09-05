@@ -46,8 +46,44 @@ app.get('/', (req, res) => {
 })
 
 app.post('/insertData', (req, res) => {
-    students.push(req.body);
+    let { id, name, email, password, editId } = req.body;
+    if (editId) {
+        let data = students.map((val) => {
+            if (val.id == editId) {
+                val.name = name;
+                val.email = email;
+                val.password = password;
+            }
+            return val;
+        })
+        students = data;
+    }
+    else {
+        students.push({ id, name, email, password });
+    }
     return res.redirect('/');
+})
+
+app.get('/deletedata/:id', (req, res) => {
+    let { id } = req.params;
+    console.log(id);
+    let data = students.filter((student) => {
+        return student.id != id;
+    })
+    students = data
+    return res.redirect('/');
+})
+
+app.get('/editdata/:id', (req, res) => {
+    let { id } = req.params;
+    console.log(id);
+    let data = students.filter((student) => {
+        return student.id == id;
+    });
+    console.log(data[0]);
+    return res.render('edit', {
+        data: data[0]
+    });
 })
 
 app.listen(port, (err) => {
